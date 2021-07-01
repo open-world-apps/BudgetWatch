@@ -1,9 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import { RootState, AppThunk } from "../app/store";
+import {RootState, AppThunk} from '../app/store';
 
 export interface BalanceState {
-   remainingBalance: number;
-   targetBalance: number;
+  remainingBalance: number;
+  targetBalance: number;
 }
 
 const initialState: BalanceState = {
@@ -12,20 +12,30 @@ const initialState: BalanceState = {
 };
 
 const balanceSlice = createSlice({
-   name: 'balance',
-   initialState,
-   reducers: {
-      incrementByAmount: (state, action: PayloadAction<number>) => {
-         state.remainingBalance += action.payload;
-      },
-      decrementByAmount: (state, action: PayloadAction<number>) => {
-         state.remainingBalance -= action.payload;
-      },
-
-   },
-   extraReducers: builder => {},
+  name: 'balance',
+  initialState,
+  reducers: {
+    incrementByAmount: (state, action: PayloadAction<number>) => {
+      state.remainingBalance += action.payload;
+    },
+    decrementByAmount: (state, action: PayloadAction<number>) => {
+      state.remainingBalance -= action.payload;
+    },
+    increaseTarget: (state, action: PayloadAction<number>) => {
+      state.targetBalance += action.payload;
+    },
+    decreaseTarget: (state, action: PayloadAction<number>) => {
+      state.targetBalance -= action.payload;
+    },
+  },
+  extraReducers: builder => {},
 });
 
-export const { incrementByAmount, decrementByAmount } = balanceSlice.actions;
+export const {
+  incrementByAmount,
+  decrementByAmount,
+  increaseTarget,
+  decreaseTarget,
+} = balanceSlice.actions;
 
 export default balanceSlice.reducer;
