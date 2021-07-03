@@ -1,17 +1,17 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {RootState, AppThunk} from '../app/store';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState, AppThunk } from '../app/store';
 
 type Percentage = number;
 
 export interface BudgetState {
-  remainingBudget: number;
-  targetBudget: number | Percentage;
+  remaining: number;
+  target: number | Percentage;
   measurement: string;
 }
 
 const initialState: BudgetState = {
-  remainingBudget: 0,
-  targetBudget: 0,
+  remaining: 0,
+  target: 0,
   measurement: 'fixed',
 };
 
@@ -20,16 +20,16 @@ const budgetSlice = createSlice({
   initialState,
   reducers: {
     incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.remainingBudget += action.payload;
+      state.remaining += action.payload;
     },
     decrementByAmount: (state, action: PayloadAction<number>) => {
-      state.remainingBudget -= action.payload;
+      state.remaining -= action.payload;
     },
     increaseTarget: (state, action: PayloadAction<number>) => {
-      state.targetBudget += action.payload;
+      state.target += action.payload;
     },
     decreaseTarget: (state, action: PayloadAction<number>) => {
-      state.targetBudget -= action.payload;
+      state.target -= action.payload;
     },
   },
   extraReducers: builder => {},
