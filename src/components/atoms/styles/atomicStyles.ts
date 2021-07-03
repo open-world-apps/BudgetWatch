@@ -1,5 +1,12 @@
 // @ts-ignore
 import styled from 'styled-components/native';
+import { StyleSheet } from 'react-native';
 
-export const DigitContainer = styled.View``;
-export const Digit = styled.Text``;
+export const styles = StyleSheet.create({
+  digit: {
+    textAlign: 'center',
+    fontFamily: 'Inconsolata-Bold',
+    fontSize: 25,
+    height: 28,
+  },
+});
