@@ -59,3 +59,5 @@ buck-out/
 /ios/Pods/
 
 *.code-workspace
+compound.js
+test.js
