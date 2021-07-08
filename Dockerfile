@@ -1,32 +1,75 @@
-FROM node:14.17.1
-MAINTAINER c0dezer019
+FROM c0dezer019/react-native-android-base AS environment
 
-# Setting environment
-ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
+LABEL version=1.0.0
+LABEL maintainer="c0dezer019"
+LABEL description="BudgetWatch is a React Native Financial App that puts an emphasis on budget monitoring."
 
-# Global
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-ENV PATH /home/node/.npm-global/bin:$PATH
-RUN npm i --unsafe-perm -g npm@latest expo-cli@latest yarn
+# Build args
+ARG dev_user
+ARG dev_password
+ARG root_user=root
+ARG root_password
 
-# Local
-RUN mkdir -p /usr/local/app && chown node:node /usr/local/app
-ADD . /usr/local/app
-WORKDIR /usr/local/app
-ENV PATH /usr/local/app/.bin:$PATH
+ENV DEV_USER ${dev_user}
 
-USER node
+RUN apt-get update && apt-get upgrade
 
-COPY ./package.json ./yarn.lock ./
+# Installing necessary npm packages
+RUN npm i -g yarn ncu
 
-RUN yarn install --silent
+# Creating usergroups
+RUN groupadd -R ~ -r admin && \
+    groupadd -R / developers
 
-COPY . .
+# Creating root user and a regular user.
+RUN adduser \
+    -c 'Root user' \
+    -s /bin/bash \
+    ${root_user} \
+    -p ${root_password} && \
+    usermod \
+    -a -G \
+    admin \
+    ${root_user}
 
-# Expose ports
-ARG PORT=19006
-ENV PORT $PORT
-EXPOSE $PORT 19001 19002
+# Adding a user for general development
+RUN adduser \
+    -c 'Developer' \
+    -R / \
+    -s /bin/bash \
+    ${dev_user} \
+    -p ${dev_password} && \
+    usermod \
+    -a -G \
+    developers \
+    ${dev_user}
 
+# Adding development user to sudo
+RUN usermod -aG sudo c0dezer019
+
+WORKDIR /home/${dev_user}
+
+RUN mkdir -p app/
+
+FROM build AS App
+
+WORKDIR /app/
+
+COPY package.json .
+COPY yarn.lock .
+
+# First check for updates of the dependencies in package.json then install depencies.
+RUN ncu -u && yarn install
+
+# Copy contents of repo/project root into the /app directory and CHOWN the files to the developer group.
+ADD --chown=:developers . .
+
+FROM build AS Metro
+
+# Simply runs the Metro server
 CMD ["yarn", "start"]
+
+FROM Metro AS Android
+
+# Triggers Android stuff
+CMD ["yarn", "android"]
