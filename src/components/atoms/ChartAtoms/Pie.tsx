@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { View } from 'react-native';
 
-import { useAppSelector } from '../../redux/app/hooks';
+import { useAppSelector } from '../../../redux/app/hooks';
 
 const Pie = (): JSX.Element => {
-  return <View />;
+   return <View />;
 };
 
 export default Pie;
