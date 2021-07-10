@@ -1,9 +1,25 @@
-version: '3.7'
 services:
-  react-native-docker:
-    build: .
+  budgetwatch:
+    build:
+      context: .
+      args:
+        - dev_user=c0dezer019
+        - dev_password=${dev_password}
+      labels:
+        - "com.c0dezer0-apps.version=1.0.0"
+        - "com.c0dezer0-apps.description=BudgetWatch is a React Native Financial App that puts an emphasis on budget monitoring."
+        - "com.c0dezer0-apps.maintainer=c0dezer019"
+        - "com.c0dezer0-apps.github_repo=https://github.com/c0dezer0-apps/BudgetWatch"
+        - "com.c0dezer0-apps.bitbucket_repo=https://bitbucket.org/c0dezer02/budgetwatch"
+      network: host
+    image: budgetwatch:development
     ports:
-      - 8081:8081
-    working_dir: /app
+      - 3000:3000
     volumes:
+      - bw:/data
       - ./:/app
+      - /dev/bus/usb:/dev/bus/usb
+    working_dir: /app
+volumes:
+  bw:
+  android-base:

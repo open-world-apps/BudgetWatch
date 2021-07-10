@@ -1,14 +1,11 @@
-FROM c0dezer019/react-native-android-base AS environment
+FROM c0dezer019/react-native-android-base:testing AS environment
 
 LABEL version=1.0.0
 LABEL maintainer="c0dezer019"
-LABEL description="BudgetWatch is a React Native Financial App that puts an emphasis on budget monitoring."
 
 # Build args
 ARG dev_user
 ARG dev_password
-ARG root_user=root
-ARG root_password
 
 ENV DEV_USER ${dev_user}
 
@@ -18,36 +15,12 @@ RUN apt-get update && apt-get upgrade
 RUN npm i -g yarn ncu
 
 # Creating usergroups
-RUN groupadd -R ~ -r admin && \
-    groupadd -R / developers
-
-# Creating root user and a regular user.
-RUN adduser \
-    -c 'Root user' \
-    -s /bin/bash \
-    ${root_user} \
-    -p ${root_password} && \
-    usermod \
-    -a -G \
-    admin \
-    ${root_user}
+RUN groupadd -g 107 developers
 
 # Adding a user for general development
-RUN adduser \
-    -c 'Developer' \
-    -R / \
-    -s /bin/bash \
-    ${dev_user} \
-    -p ${dev_password} && \
-    usermod \
-    -a -G \
-    developers \
-    ${dev_user}
-
-# Adding development user to sudo
+RUN adduser -c 'Developer' -R / -s /bin/bash -G developers ${dev_user} -p ${dev_password}
 RUN usermod -aG sudo c0dezer019
-
-WORKDIR /home/${dev_user}
+USER ${dev_user}
 
 RUN mkdir -p app/
 
