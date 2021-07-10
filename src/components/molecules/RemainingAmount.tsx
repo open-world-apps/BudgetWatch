@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import Amount from '../atoms/Amount';
+import Pie from '../atoms/ChartAtoms/Pie';
 import { useAppSelector } from '../../redux/app/hooks';
 
 import styles from './styles/molecularStyles';
@@ -20,10 +20,7 @@ const RemainingAmount = ({ cat }: Props) => {
 
   return (
     <View style={styles.container}>
-      <Amount selector={remaining} />
-      <Text style={styles.text}>
-        remaining of <Amount selector={target} style={styles.text} />
-      </Text>
+      <Pie />
     </View>
   );
 };

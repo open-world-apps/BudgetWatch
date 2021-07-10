@@ -1,8 +1,8 @@
 {
   "name": "budgetwatch",
   "version": "0.0.1",
-  "private": true,
-  "type": "module",
+  "private": false,
+  "github":"https://github.com/c0dezer0-apps/BudgetWatch",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -24,6 +24,7 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.4.0",
+    "react-native-svg": "^12.1.1",
     "react-redux": "^7.2.4",
     "victory-native": "^35.3.3"
   },

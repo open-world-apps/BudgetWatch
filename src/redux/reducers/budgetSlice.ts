@@ -10,10 +10,10 @@ export interface BudgetState {
 }
 
 const initialState: BudgetState = {
-   remaining: 0,
-   target: 0,
+   remaining: 300,
+   target: 400,
    measurement: 'fixed',
-   budgets: 0, // How many budgets the user has stored.
+   budgets: 3, // How many budgets the user has stored.
 };
 
 const budgetSlice = createSlice({

@@ -56,6 +56,6 @@ export default {
         labels: assign({}, baseLabelStyles, { padding: 20 }),
       },
     },
-    baseProps,
+    baseProps(colors().budgets),
   ),
 };
