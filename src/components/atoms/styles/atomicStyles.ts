@@ -1,7 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-export const styles = StyleSheet.create({
-  digit: {
+export interface Styles {
+  text?: TextStyle;
+  pressable?: ViewStyle;
+}
+
+export const styles = StyleSheet.create<Styles>({
+  text: {
     textAlign: 'center',
     fontFamily: 'Inconsolata-Bold',
     fontSize: 25,
