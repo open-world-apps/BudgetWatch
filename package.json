@@ -10,9 +10,12 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "storybook": "start-storybook -p 7007",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@emotion/core": "^11.0.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
@@ -29,6 +32,7 @@
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.4.0",
     "react-native-svg": "^12.1.1",
+    "react-native-svg-charts": "^5.4.0",
     "react-redux": "^7.2.4"
   },
   "devDependencies": {
@@ -37,13 +41,26 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/runtime": "^7.14.6",
     "@react-native-community/eslint-config": "^3.0.0",
+    "@storybook/addon-actions": "^6.3",
+    "@storybook/addon-knobs": "^6.3",
+    "@storybook/addon-links": "^6.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/addons": "^6.3.4",
+    "@storybook/api": "^6.3.4",
+    "@storybook/components": "^6.3.4",
+    "@storybook/core-events": "^6.3.4",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
+    "@storybook/theming": "^6.3.4",
     "@types/jest": "^26.0.24",
     "@types/lodash": "^4.14.171",
     "@types/react": "^17",
-    "@types/react-native": "^0.64.11",
+    "@types/react-native": "^0.64.12",
     "@types/react-test-renderer": "^17.0.1",
     "@types/styled-components": "^5.1.11",
     "babel-jest": "^27.0.6",
+    "babel-loader": "^8.2.2",
     "chai": "^4.3.4",
     "chai-enzyme": "^1.0.0-beta.1",
     "cheerio": "^1.0.0-rc.10",
@@ -60,7 +77,9 @@
     "mocha": "^9.0.2",
     "prettier": "^2.3.2",
     "react-test-renderer": "17.0.2",
-    "typescript": "^4.3.5"
+    "regenerator-runtime": "^0.13.7",
+    "typescript": "^4.3.5",
+    "webpack": "^5.44.0"
   },
   "resolutions": {
     "@types/react": "^17"
