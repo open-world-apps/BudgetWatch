@@ -3,17 +3,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type Percentage = number;
 
 export interface BudgetState {
+   budgets: number;
+   measurement: string;
    remaining: number;
    target: number | Percentage;
-   measurement: string;
-   budgets: number;
 }
 
 const initialState: BudgetState = {
+   budgets: 2, // How many budgets the user has stored.
+   measurement: 'fixed',
    remaining: 300,
    target: 400,
-   measurement: 'fixed',
-   budgets: 3, // How many budgets the user has stored.
 };
 
 const budgetSlice = createSlice({
@@ -27,10 +27,10 @@ const budgetSlice = createSlice({
          state.remaining -= action.payload;
       },
       incrementBudgets: (state, action: PayloadAction<number>) => {
-        state.budgets++;
+         state.budgets++;
       },
       decrementBudgets: (state, action: PayloadAction<number>) => {
-        state.budgets--;
+         state.budgets--;
       },
       increaseTarget: (state, action: PayloadAction<number>) => {
          state.target += action.payload;
