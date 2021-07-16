@@ -4,54 +4,53 @@ type ColorCode = number;
 type HexCode = string;
 type RGB = `rgb(${ColorCode}, ${ColorCode}, ${ColorCode})`;
 type Hex = `#${HexCode}`;
+type Type = 'hex' | 'rgb';
 
-export const rgbGenerator = (times: number, arr: ColorArray = [], index = 0) => {
-    if ( index === times) return;
+export const rgbGenerator = (
+   times: number,
+   arr: ColorArray = [],
+   index = 0,
+) => {
+   if (index === times) return;
+   else {
+      const rnd = Math.round;
+      const r = Math.random;
+      const MAX = 255;
 
-    if (index < times) {
-        const rnd = Math.round
-        const r = Math.random
-        const MAX = 255;
-        
-        arr.push(`rgb(${rnd(r() * MAX)}, ${rnd(r() * MAX)}, ${rnd(r() * MAX)})`);
+      arr.push(`rgb(${rnd(r() * MAX)}, ${rnd(r() * MAX)}, ${rnd(r() * MAX)})`);
 
-        rgbGenerator(times, arr, index + 1);
-    }
+      rgbGenerator(times, arr, index + 1);
+   }
 
-    return arr;
-}
-
-// Helper function for rgbArrayToHexArray function
-export const rgbConverter = (codes: Array<number>): Hex=> {
-    let hexCode = ``;
-
-    codes.map(el => {
-        let codeFragment = Math.floor(el / 16);
-
-        hexCode += codeFragment.toString(16);
-        codeFragment = el % 16;
-        hexCode += codeFragment.toString(16);
-    });
-
-
-    return `#${hexCode}`;
+   return arr;
 };
 
-export const rgbArrayToHexArray = (colorArr: Array<string>, hexArray: HexArray = [], index: number = 0): HexArray | undefined => {
+// Helper function for rgbArrayToHexArray function
+export const hexGenerator = (
+   times: number,
+   hexArray: Array<Hex> = [],
+   index: number = 0,
+): Array<Hex> | undefined => {
+   if (index === times) return;
+   else {
+      const code = () =>
+         (((Math.random() * 0xffffff) << 0).toString(16) + '000000').slice(
+            0,
+            6,
+         );
+      hexArray.push(`#${code()}`);
 
-    if (index === colorArr.length) return;
-    else { 
-        const rgbNumberString: string = colorArr[index].replace('rgb(', '').replace(')', '');
-        const rgbCodes: Array<number> = rgbNumberString.split(', ').map(el => parseInt(el));
-        hexArray.push(rgbConverter(rgbCodes));
+      hexGenerator(times, hexArray, index + 1);
+   }
 
-        rgbArrayToHexArray(colorArr, hexArray, index + 1);
-    }
+   return hexArray;
+};
 
-    return hexArray;
-}
-
-export const generator = (n: number): HexArray => {
-
-    return rgbArrayToHexArray(rgbGenerator(n)!)!;
+export const generator = (n: number, type: Type): HexArray | ColorArray => {
+   switch (type) {
+      case 'rgb':
+         return rgbGenerator(n)!;
+      case 'hex':
+         return hexGenerator(n)!;
+   }
 };
