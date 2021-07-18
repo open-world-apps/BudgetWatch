@@ -1,7 +1,7 @@
 node_modules
-src/.env
+.env
 .env.*
-src/.env
+.env
 *.env.*
 .idea
 .vscode
