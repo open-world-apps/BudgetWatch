@@ -1,5 +1,5 @@
 export type HexArray = Array<Hex>;
-type ColorArray = Array<RGB>;
+export type ColorArray = Array<RGB>;
 type ColorCode = number;
 type HexCode = string;
 type RGB = `rgb(${ColorCode}, ${ColorCode}, ${ColorCode})`;

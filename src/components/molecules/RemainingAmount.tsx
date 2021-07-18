@@ -7,22 +7,18 @@ import { useAppSelector } from '../../redux/app/hooks';
 import styles from './styles/molecularStyles';
 
 interface Props {
-  cat: string;
+   cat: string;
 }
 
 const RemainingAmount = ({ cat }: Props) => {
-  const remaining = useAppSelector(state =>
-    cat === 'balance' ? state.balance.remaining : state.budget.remaining,
-  );
-  const target = useAppSelector(state =>
-    cat === 'balance' ? state.balance.target : state.budget.target,
-  );
+   const remaining = useAppSelector(state =>
+      cat === 'balance' ? state.balance.remaining : state.budget.remaining,
+   );
+   const target = useAppSelector(state =>
+      cat === 'balance' ? state.balance.target : state.budget.target,
+   );
 
-  return (
-    <View style={styles.container}>
-      <Pie />
-    </View>
-  );
+   return <View style={styles.container} />;
 };
 
 export default RemainingAmount;

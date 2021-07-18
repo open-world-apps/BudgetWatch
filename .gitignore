@@ -64,7 +64,7 @@ compound.js
 test.js
 
 # Environment
-.env
+src/.env
 
 # production stuff
 dist

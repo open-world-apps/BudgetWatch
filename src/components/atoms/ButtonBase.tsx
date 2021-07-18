@@ -1,14 +1,5 @@
 import React, { useState, useEffect, ReactElement } from 'react';
-import {
-   ButtonProps,
-   GestureResponderEvent,
-   Pressable,
-   StyleProp,
-   Text,
-   TextStyle,
-   View,
-   ViewStyle,
-} from 'react-native';
+import { GestureResponderEvent, Pressable, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import type { Styles } from './styles/atomicStyles';
@@ -41,14 +32,13 @@ const ButtonBase = ({
    label,
    pressEvent,
    ripple,
-   styles
+   styles,
 }: Props): ReactElement => {
    const [btnLabel, setLabel] = useState<string>('');
 
    useEffect(() => {
       labelHandler();
    }, [label]);
-
 
    function labelHandler() {
       setLabel(btnLabel);
@@ -63,13 +53,12 @@ const ButtonBase = ({
       <Pressable
          android_ripple={ripple ? rippleConfig : undefined}
          delayLongPress={delay}
-         disabled={disable ? true : false}
+         disabled={disable}
          onPress={pressEvent.onPress}
          onPressIn={pressEvent.onPressIn}
          onPressOut={pressEvent.onPressOut}
          onLongPress={pressEvent.onLongPress}
-         style={styles.pressable}
-      >
+         style={styles.pressable}>
          <Text style={styles.label}>{btnLabel}</Text>
       </Pressable>
    );
@@ -80,16 +69,16 @@ ButtonBase.propTypes = {
    pressEvent: PropTypes.shape({
       onPress: PropTypes.func.isRequired,
       onPressIn: PropTypes.func,
-      onPressOut: PropTypes.func, 
+      onPressOut: PropTypes.func,
       onLongPress: PropTypes.func,
    }).isRequired,
 };
 
 ButtonBase.defaultProps = {
    pressEvent: {
-      onPressIn: () => { },
-      onPressOut: () => { },
-      onLongPress: () => { },
+      onPressIn: () => {},
+      onPressOut: () => {},
+      onLongPress: () => {},
    },
 };
 

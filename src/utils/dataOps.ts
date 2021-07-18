@@ -10,7 +10,7 @@ interface Parameters {
 
 const createDataSet = (data: Parameters) => {
    const count = useAppSelector(state => state.budget.budgets);
-   const colors = generator(count);
+   const colors = generator(count, 'hex');
    const dataArr = new Array(count);
 
    return dataArr.map((el, i) => {
