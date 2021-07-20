@@ -6,14 +6,17 @@ import {
    StyleSheet,
    useColorScheme,
 } from 'react-native';
-
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import store from './redux/app/store';
+// @ts-ignore
+import StorybookUIRoot from '../storybook';
 
 interface Props {
    children: any;
    title: string;
 }
+
+const LOAD_STORYBOOK = true;
 
 const App = () => {
    const isDarkMode = useColorScheme() === 'dark';
@@ -41,4 +44,4 @@ const styles = StyleSheet.create({
    },
 });
 
-export default App;
+export default LOAD_STORYBOOK ? StorybookUIRoot : App;
