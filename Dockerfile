@@ -24,7 +24,7 @@ USER ${dev_user}
 
 RUN mkdir -p app/
 
-FROM build AS App
+FROM environment AS App
 
 WORKDIR /app/
 
