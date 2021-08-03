@@ -16,6 +16,7 @@ addDecorator(withKnobs);
 
 // import stories
 configure(() => {
+  // eslint-disable-next-line global-require
   require('./stories');
 }, module);
 
