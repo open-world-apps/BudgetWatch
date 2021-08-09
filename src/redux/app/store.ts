@@ -4,7 +4,7 @@ import BudgetReducer from '../reducers/budgetSlice';
 
 const store = configureStore({
   reducer: {
-    balance: BalanceReducer,
+    account: BalanceReducer,
     budget: BudgetReducer,
   },
 });
