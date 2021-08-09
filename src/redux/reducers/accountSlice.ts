@@ -1,25 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState, AppThunk } from '../app/store';
 
-type Percentage = number;
-
-export interface BudgetState {
-  budgets: number;
-  measurement: string;
+export interface BalanceState {
+  accounts: number;
+  activeAccount: string;
   balance: number;
-  target: number | Percentage;
-  activeBudget: string;
+  target: number;
 }
 
-const initialState: BudgetState = {
-  activeBudget: '',
+const initialState: BalanceState = {
+  accounts: 0, // How many accounts the user has stored.
+  activeAccount: '',
   balance: 0,
-  budgets: 0, // How many budgets the user has stored.
-  measurement: 'fixed',
   target: 0,
 };
 
-const budgetSlice = createSlice({
-  name: 'budget',
+const accountSlice = createSlice({
+  name: 'account',
   initialState,
   reducers: {
     incrementByAmount: (state, action: PayloadAction<number>) => {
@@ -28,20 +25,20 @@ const budgetSlice = createSlice({
     decrementByAmount: (state, action: PayloadAction<number>) => {
       Object.assign(state, { balance: state.balance - action.payload });
     },
-    incrementBudgets: state => {
-      Object.assign(state, { budgets: state.budgets + 1 });
-    },
-    decrementBudgets: state => {
-      Object.assign(state, { budgets: state.budgets - 1 });
-    },
     increaseTarget: (state, action: PayloadAction<number>) => {
       Object.assign(state, { target: state.target + action.payload });
     },
     decreaseTarget: (state, action: PayloadAction<number>) => {
       Object.assign(state, { target: state.target - action.payload });
     },
-    setActiveBudget: (state, action: PayloadAction<string>) => {
-      Object.assign(state, { activeBudget: action.payload });
+    incrementAccounts: (state, action: PayloadAction<number>) => {
+      Object.assign(state, { accounts: state.accounts + 1 });
+    },
+    decrementAccounts: (state, action: PayloadAction<number>) => {
+      Object.assign(state, { accounts: state.accounts - 1 });
+    },
+    setActiveAccount: (state, action: PayloadAction<string>) => {
+      Object.assign(state, { activeAccount: action.payload });
     },
   },
   extraReducers: builder => {},
@@ -50,11 +47,11 @@ const budgetSlice = createSlice({
 export const {
   incrementByAmount,
   decrementByAmount,
-  incrementBudgets,
-  decrementBudgets,
   increaseTarget,
   decreaseTarget,
-  setActiveBudget,
-} = budgetSlice.actions;
+  incrementAccounts,
+  decrementAccounts,
+  setActiveAccount,
+} = accountSlice.actions;
 
-export default budgetSlice.reducer;
+export default accountSlice.reducer;

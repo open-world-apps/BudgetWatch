@@ -1,5 +1,5 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import BalanceReducer from '../reducers/balanceSlice';
+import BalanceReducer from '../reducers/accountSlice';
 import BudgetReducer from '../reducers/budgetSlice';
 
 const store = configureStore({
