@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { ReactElement, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Text } from 'react-native';
-
-interface Props {
-   selector: number;
-   style?: any;
-}
-
 import { styles } from './styles/atomicStyles';
 
-const Amount = ({ selector, style }: Props): JSX.Element => {
-   return <Text style={style ? style : styles.text}>${selector}</Text>;
+interface Props {
+  balance: number;
+  style?: any;
+}
+
+const Amount = ({ balance, style }: Props): ReactElement => {
+  const [cardBalance, adjustBalance] = useState<number>(0);
+
+  useEffect(() => {
+    adjustBalance(balance);
+  }, [cardBalance]);
+
+  return <Text style={style || styles.text}>{cardBalance}</Text>;
+};
+
+Amount.propTypes = {
+  balance: PropTypes.number.isRequired,
+  style: PropTypes.shape,
+};
+
+Amount.defaultProps = {
+  style: {},
 };
 
 export default Amount;

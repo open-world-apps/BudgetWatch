@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { ReactElement, useState, useEffect } from 'react';
 import { Text } from 'react-native';
 
 interface Props {
@@ -6,7 +6,11 @@ interface Props {
 }
 
 const Label = ({ label }: Props): ReactElement => {
-  const [activeLabel, setActiveLabel] = useState<string>(label);
+  const [activeLabel, setActiveLabel] = useState<string>('');
+
+  useEffect(() => {
+    setActiveLabel(label);
+  }, [label]);
 
   return <Text>{activeLabel}</Text>;
 };
