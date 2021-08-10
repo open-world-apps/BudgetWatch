@@ -23,25 +23,25 @@ const budgetSlice = createSlice({
   initialState,
   reducers: {
     incrementByAmount: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { balance: state.balance + action.payload });
+      state.balance += action.payload;
     },
     decrementByAmount: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { balance: state.balance - action.payload });
+      state.balance -= action.payload;
     },
     incrementBudgets: state => {
-      Object.assign(state, { budgets: state.budgets + 1 });
+      state.budgets++;
     },
     decrementBudgets: state => {
-      Object.assign(state, { budgets: state.budgets - 1 });
+      state.budgets--;
     },
     increaseTarget: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { target: state.target + action.payload });
+      state.target += action.payload;
     },
     decreaseTarget: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { target: state.target - action.payload });
+      state.target -= action.payload;
     },
     setActiveBudget: (state, action: PayloadAction<string>) => {
-      Object.assign(state, { activeBudget: action.payload });
+      state.activeBudget = action.payload;
     },
   },
   extraReducers: builder => {},

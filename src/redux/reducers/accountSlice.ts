@@ -20,25 +20,25 @@ const accountSlice = createSlice({
   initialState,
   reducers: {
     incrementByAmount: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { balance: state.balance + action.payload });
+      state.balance += action.payload;
     },
     decrementByAmount: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { balance: state.balance - action.payload });
+      state.balance -= action.payload;
     },
     increaseTarget: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { target: state.target + action.payload });
+      state.target += action.payload;
     },
     decreaseTarget: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { target: state.target - action.payload });
+      state.target -= action.payload;
     },
     incrementAccounts: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { accounts: state.accounts + 1 });
+      state.accounts++;
     },
     decrementAccounts: (state, action: PayloadAction<number>) => {
-      Object.assign(state, { accounts: state.accounts - 1 });
+      state.accounts--;
     },
     setActiveAccount: (state, action: PayloadAction<string>) => {
-      Object.assign(state, { activeAccount: action.payload });
+      state.activeAccount = action.payload;
     },
   },
   extraReducers: builder => {},
