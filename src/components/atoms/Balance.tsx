@@ -8,14 +8,14 @@ interface Props {
   style?: any;
 }
 
-const Amount = ({ balance, style }: Props): ReactElement => {
+const Amount = ({ balance }: Props): ReactElement => {
   const [cardBalance, adjustBalance] = useState<number>(0);
 
   useEffect(() => {
     adjustBalance(balance);
-  }, [cardBalance]);
+  }, [balance]);
 
-  return <Text style={style || styles.text}>{cardBalance}</Text>;
+  return <Text style={styles.text}>{cardBalance}</Text>;
 };
 
 Amount.propTypes = {
