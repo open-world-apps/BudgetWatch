@@ -8,7 +8,7 @@ interface Props {
   style?: any;
 }
 
-const Amount = ({ balance }: Props): ReactElement => {
+const Balance = ({ balance }: Props): ReactElement => {
   const [cardBalance, adjustBalance] = useState<number>(0);
 
   useEffect(() => {
@@ -18,13 +18,13 @@ const Amount = ({ balance }: Props): ReactElement => {
   return <Text style={styles.text}>{cardBalance}</Text>;
 };
 
-Amount.propTypes = {
+Balance.propTypes = {
   balance: PropTypes.number.isRequired,
   style: PropTypes.shape,
 };
 
-Amount.defaultProps = {
+Balance.defaultProps = {
   style: {},
 };
 
-export default Amount;
+export default Balance;

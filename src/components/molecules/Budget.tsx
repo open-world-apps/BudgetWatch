@@ -1,10 +1,5 @@
 import React, { ReactElement, useState, useEffect } from 'react';
-import {
-  GestureResponderEvent,
-  Pressable,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import Label from '../atoms/Label';
 import Balance from '../atoms/Balance';
@@ -17,7 +12,7 @@ interface Props {
   onPress: () => void;
 }
 
-const BudgetCard = ({ budget, onPress }: Props): ReactElement => {
+const Budget = ({ budget, onPress }: Props): ReactElement => {
   const [label, changeLabel] = useState<string>('');
   const [balance, adjustBalance] = useState<number>(0);
 
@@ -55,4 +50,4 @@ const budgetStyles = StyleSheet.create({
   },
 });
 
-export default BudgetCard;
+export default Budget;
