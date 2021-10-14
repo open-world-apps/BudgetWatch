@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import Pie from '../atoms/ChartAtoms/Pie';
+import Pie from '../atoms/pieChart/Pie';
 import { useAppSelector } from '../../redux/app/hooks';
 
 import styles from './styles/molecularStyles';

@@ -1,5 +1,6 @@
 import React, { ReactElement, useState, useEffect } from 'react';
 import { Text } from 'react-native';
+import { styles } from './styles/atomicStyles';
 
 interface Props {
   label: string;
@@ -12,7 +13,7 @@ const Label = ({ label }: Props): ReactElement => {
     setActiveLabel(label);
   }, [label]);
 
-  return <Text>{activeLabel}</Text>;
+  return <Text style={styles.label}>{activeLabel}</Text>;
 };
 
 export default Label;
