@@ -33,9 +33,11 @@
   },
   "rules": {
     "import/extensions": 0,
+    "import/prefer-default-export": 0,
     "react/jsx-filename-extension": 0,
     "no-param-reassign": 0,
     "no-plusplus": 0,
-    "no-use-before-define": 0
+    "no-use-before-define": 0,
+    "react-hooks/exhaustive-deps": 0
   }
 }
