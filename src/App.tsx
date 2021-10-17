@@ -7,9 +7,14 @@ import {
   useColorScheme,
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import store from './redux/app/store';
 // @ts-ignore
 import StorybookUIRoot from './storybook';
+
+import FirstStepsModal from './components/screens/FirstStepsModal';
+import Main from './components/screens/Main';
 
 // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 interface Props {
@@ -18,8 +23,16 @@ interface Props {
 }
 
 const LOAD_STORYBOOK = true;
+const RootStack = createStackNavigator();
+const fSModalStack = createStackNavigator();
 
-const App = () => {
+const FSModalStackScreen = (): React.ReactElement => (
+  <fSModalStack.Navigator>
+    <fSModalStack.Screen name="secondary" component={FirstStepsModal} />
+  </fSModalStack.Navigator>
+);
+
+const App = (): React.ReactElement => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -28,9 +41,22 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      </SafeAreaView>
+      <NavigationContainer>
+        <SafeAreaView style={backgroundStyle}>
+          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        </SafeAreaView>
+        <RootStack.Navigator>
+          <RootStack.Group>
+            <RootStack.Screen name="Home" component={Main} />
+          </RootStack.Group>
+          <RootStack.Group>
+            <RootStack.Screen
+              name="FirstSteps"
+              component={FSModalStackScreen}
+            />
+          </RootStack.Group>
+        </RootStack.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 };
