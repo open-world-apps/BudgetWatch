@@ -44,7 +44,6 @@ const budgetSlice = createSlice({
       state.activeBudget = action.payload;
     },
   },
-  extraReducers: builder => {},
 });
 
 export const {
