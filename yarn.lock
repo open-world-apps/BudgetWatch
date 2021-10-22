@@ -4706,6 +4706,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/json-schema@npm:^7.0.9":
+  version: 7.0.9
+  resolution: "@types/json-schema@npm:7.0.9"
+  checksum: 259d0e25f11a21ba5c708f7ea47196bd396e379fddb79c76f9f4f62c945879dc21657904914313ec2754e443c5018ea8372362f323f30e0792897fdb2098a705
+  languageName: node
+  linkType: hard
+
 "@types/json5@npm:^0.0.29":
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
@@ -4850,12 +4857,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.65.9":
-  version: 0.65.9
-  resolution: "@types/react-native@npm:0.65.9"
+"@types/react-native@npm:^0.65.10":
+  version: 0.65.10
+  resolution: "@types/react-native@npm:0.65.10"
   dependencies:
     "@types/react": "*"
-  checksum: 1ec0820b974b61272ae2c7452313e0534a19f127553a22b324f8175ebd168d469af10e3b405dc3d009d7d367d4a671717be7ac8469223096691ccdaa30a24723
+  checksum: 7a14600fd6d71e64388dbde9849aeec2c7233010cfc4ed2836d441a14d518079b55f14639c873e79b5f1d47e8814b66ffd4ef9399a788e6bfcf9236dc4417731
   languageName: node
   linkType: hard
 
@@ -5033,6 +5040,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/eslint-plugin@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@typescript-eslint/eslint-plugin@npm:5.1.0"
+  dependencies:
+    "@typescript-eslint/experimental-utils": 5.1.0
+    "@typescript-eslint/scope-manager": 5.1.0
+    debug: ^4.3.2
+    functional-red-black-tree: ^1.0.1
+    ignore: ^5.1.8
+    regexpp: ^3.2.0
+    semver: ^7.3.5
+    tsutils: ^3.21.0
+  peerDependencies:
+    "@typescript-eslint/parser": ^5.0.0
+    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: dd27bec00920600c79047bac2ec061712a0134dd6bc27254a5829031271cc91518609a073c09338c0ff8ccc34a48df13c0d45a071d9b09e9f3d80be9e6e1f2e3
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/experimental-utils@npm:4.28.2":
   version: 4.28.2
   resolution: "@typescript-eslint/experimental-utils@npm:4.28.2"
@@ -5046,6 +5075,22 @@ __metadata:
   peerDependencies:
     eslint: "*"
   checksum: 5b4159d4ebb01fb1c17beda953e0678667ec3ea361604bf74f0e057c892269a3a12ea1e94948a37f790029f0ca38d6be86d56e70ac6e608c90e1e191a89d3e7f
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/experimental-utils@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@typescript-eslint/experimental-utils@npm:5.1.0"
+  dependencies:
+    "@types/json-schema": ^7.0.9
+    "@typescript-eslint/scope-manager": 5.1.0
+    "@typescript-eslint/types": 5.1.0
+    "@typescript-eslint/typescript-estree": 5.1.0
+    eslint-scope: ^5.1.1
+    eslint-utils: ^3.0.0
+  peerDependencies:
+    eslint: "*"
+  checksum: 84b7efdaf28dae1f9d786477e429234f9a06df6588b50d27aa561109594f745663cac0c89ee424c87792380b9c0a4f02b0ee7eaf9fda5930e8be584813fa1bfc
   languageName: node
   linkType: hard
 
@@ -7013,9 +7058,10 @@ __metadata:
     "@types/jest": ^27.0.2
     "@types/lodash": ^4.14.176
     "@types/react": ^17
-    "@types/react-native": ^0.65.9
+    "@types/react-native": ^0.65.10
     "@types/react-test-renderer": ^17.0.1
     "@types/styled-components": ^5.1.15
+    "@typescript-eslint/eslint-plugin": ^5.1.0
     "@typescript-eslint/parser": ^5.1.0
     babel-jest: ^27.3.1
     babel-loader: ^8.2.3
@@ -7024,7 +7070,7 @@ __metadata:
     cheerio: ^1.0.0-rc.10
     classnames: ^2.3.1
     enzyme: ^3.11.0
-    eslint: ^8.0.1
+    eslint: 8.0.1
     eslint-config-airbnb: ^18.2.1
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: ^2.25.2
@@ -9815,7 +9861,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:8.0.1, eslint@npm:^8.0.1":
+"eslint@npm:8.0.1":
   version: 8.0.1
   resolution: "eslint@npm:8.0.1"
   dependencies:
@@ -11564,7 +11610,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"ignore@npm:^5.0.5, ignore@npm:^5.1.4":
+"ignore@npm:^5.0.5, ignore@npm:^5.1.4, ignore@npm:^5.1.8":
   version: 5.1.8
   resolution: "ignore@npm:5.1.8"
   checksum: 967abadb61e2cb0e5c5e8c4e1686ab926f91bc1a4680d994b91947d3c65d04c3ae126dcdf67f08e0feeb8ff8407d453e641aeeddcc47a3a3cca359f283cf6121
