@@ -1,6 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-const styles = StyleSheet.create({
+export interface Styles {
+  container: ViewStyle;
+  text: TextStyle;
+  pipContainer: ViewStyle;
+}
+
+export const styles = StyleSheet.create<Styles>({
   container: {
     height: 28,
   },
@@ -11,6 +17,5 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     textAlign: 'center',
   },
+  pipContainer: {},
 });
-
-export default styles;
