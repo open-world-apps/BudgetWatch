@@ -1,5 +1,5 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const dir = '../components/organisms/FirstStepsModal';
 
-export const stepCounter = () => fs.readdirSync(dir);
+export const stepCounter = () => fs.readdirSync(dir).length;
