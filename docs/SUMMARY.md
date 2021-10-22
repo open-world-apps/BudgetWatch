@@ -10,8 +10,7 @@
 
 ## Developers
 
-* [Budget Funding Source](developers/page2/README.md)
-  * [Bank Accounts](developers/page2/page2-1/README.md)
-    * [Adding accounts](developers/page2/page2-1/page2-1-1.md)
-  * [Cash-on-hand](developers/page2/page2-2.md)
+* [Setup](developers/page2/README.md)
+  * [ESLint](developers/page2/page2-1.md)
+  * [WebPack](developers/page2/page2-2.md)
 
