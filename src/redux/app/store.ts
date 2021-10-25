@@ -1,11 +1,14 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+// eslint-disable-next-line import/no-cycle
 import BalanceReducer from '../reducers/accountSlice';
 import BudgetReducer from '../reducers/budgetSlice';
+import SetupReducer from '../reducers/setupModalSlice';
 
 const store = configureStore({
   reducer: {
     account: BalanceReducer,
     budget: BudgetReducer,
+    setup: SetupReducer,
   },
 });
 
